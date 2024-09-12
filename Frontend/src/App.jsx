@@ -2,14 +2,17 @@ import React, { useEffect, useState } from 'react'
 import AddTodo from './AddTodo'
 import Todos from './Todos'
 import axios from 'axios'
+import { baseUrl } from './url'
 
 
-const API_BASE = 'https://todo-app-beta-self.vercel.app/todo'
+
+
+
 
 const App = () => {
   const [todos ,setTodos] = useState([]);
 useEffect(()=>{
-  axios.get(API_BASE).then((response)=>{
+   axios.get(`${baseUrl}/todo`).then((response)=>{
     setTodos( response.data);
     console.log(todos);
   })

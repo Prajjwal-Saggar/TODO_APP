@@ -12,9 +12,6 @@ const app = express();
 //Middlewares
 app.use(express.json()); 
 app.use(cors());
-
-
- 
 mongoose.connect(process.env.MONGO_URL)
         .then(() => console.log('Connected to the database…')) 
         .catch((err) => console.error('Connection error:', err));

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import  axios from "axios"
 import { MdDeleteSweep } from "react-icons/md";
+import { baseUrl } from './url'
 
 const Todos = (props) => {
 
 const deleteTodo = async(id)=>{
-  await axios.delete("https://todo-app-beta-self.vercel.app/todo/delete/"+id)
+  await axios.delete(`${baseUrl}/todo/delete/${id}`)
   .then((response)=>{
      console.log(response);
       window.location.reload()
