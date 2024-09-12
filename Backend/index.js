@@ -9,11 +9,15 @@ const app = express();
 
 //Middlewares
 app.use(express.json()); 
-app.use(cors({
-        origin:{"https://todo-app-livid-alpha.vercel.app/"},
-        methods:{"POST" , "GET"},
-        credentials:true
-})); 
+app.use(cors());
+app.use((req,res,next)=>{
+    res.header('Access-Control-Allow-Headers, *, Access-Control-Allow-Origin', 'Origin, X-Requested-with, Content_Type,Accept,Authorization','https://todo-app-livid-alpha.vercel.app/');
+    if(req.method === 'OPTIONS') {
+        res.header('Access-Control-Allow-Methods','PUT,POST,PATCH,DELETE,GET');
+        return res.status(200).json({});
+    }
+    next();
+});
 
 const port = 4001; 
 const connectionString = 'mongodb://localhost:27017/todos'; 
