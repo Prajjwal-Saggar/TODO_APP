@@ -17,7 +17,9 @@ mongoose.connect(connectionString)
         .then(() => console.log('Connected to the database…')) 
         .catch((err) => console.error('Connection error:', err));
 
-
+app.get('/' , (req,res)=>{
+        res.json("Hello");
+});
         //This is the section with all the api routes
         app.get('/todo' , async(req,res)=>{
                 const todos = await Todo.find();
