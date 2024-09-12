@@ -9,7 +9,11 @@ const app = express();
 
 //Middlewares
 app.use(express.json()); 
-app.use(cors()); 
+app.use(cors({
+        origin:{"https://todo-app-livid-alpha.vercel.app/"},
+        methods:{"POST" , "GET"},
+        credentials:true
+})); 
 
 const port = 4001; 
 const connectionString = 'mongodb://localhost:27017/todos'; 
