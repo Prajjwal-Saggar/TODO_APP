@@ -8,11 +8,11 @@ const AddTodo = (props) => {
   const  handleSubmit = (event)=>{
     event.preventDefault();
     if (task!=''){
-      axios.post('http://localhost:4001/todo/new' , {task:task})
+      axios.post('https://todo-app-beta-self.vercel.app/todo/new' , {task:task})
       .then((response)=>{
         console.log(response);
         setTask('');
-        axios.get('http://localhost:4001/todo').then((response) => {
+        axios.get('https://todo-app-beta-self.vercel.app/todo').then((response) => {
           props.setTodos([...response.data]); // Update the todos state with the new array of tasks
         });
       })

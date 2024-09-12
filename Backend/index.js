@@ -9,7 +9,8 @@ const app = express();
 
 //Middlewares
 app.use(express.json()); 
-app.use(cors()); 
+app.use(cors());
+
 
 const port = 4001; 
 const connectionString = 'mongodb://localhost:27017/todos'; 
@@ -17,7 +18,9 @@ mongoose.connect(connectionString)
         .then(() => console.log('Connected to the database…')) 
         .catch((err) => console.error('Connection error:', err));
 
-
+app.get('/' , (req,res)=>{
+        res.json("Hello");
+});
         //This is the section with all the api routes
         app.get('/todo' , async(req,res)=>{
                 const todos = await Todo.find();
