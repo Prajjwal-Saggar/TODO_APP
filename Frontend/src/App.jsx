@@ -4,7 +4,7 @@ import Todos from './Todos'
 import axios from 'axios'
 
 
-const API_BASE = 'http://localhost:4001/todo'
+const API_BASE = 'https://todo-app-beta-self.vercel.app/todo'
 
 const App = () => {
   const [todos ,setTodos] = useState([]);
