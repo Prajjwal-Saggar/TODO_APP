@@ -5,7 +5,7 @@ import { MdDeleteSweep } from "react-icons/md";
 const Todos = (props) => {
 
 const deleteTodo = async(id)=>{
-  await axios.delete("http://localhost:4001/todo/delete/"+id)
+  await axios.delete("https://todo-app-beta-self.vercel.app/todo/delete/"+id)
   .then((response)=>{
      console.log(response);
       window.location.reload()
