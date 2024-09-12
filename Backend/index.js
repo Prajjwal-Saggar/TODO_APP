@@ -1,7 +1,9 @@
 const express = require('express'); 
 const cors = require('cors'); 
 const mongoose = require('mongoose');
-const Todo = require('./Todo.Models') 
+const Todo = require('./Todo.Models') ;
+
+require('dotenv').config();
 
 
 //Execute express 
@@ -12,9 +14,8 @@ app.use(express.json());
 app.use(cors());
 
 
-const port = 4001; 
-const connectionString = 'mongodb://localhost:27017/todos'; 
-mongoose.connect(connectionString)
+ 
+mongoose.connect(process.env.MONGO_URL)
         .then(() => console.log('Connected to the database…')) 
         .catch((err) => console.error('Connection error:', err));
 
@@ -37,4 +38,4 @@ app.get('/' , (req,res)=>{
                 const result  = await Todo.findByIdAndDelete(req.params.id);
                 res.json(result)
         })
-app.listen(port, () => console.log(`Server is running on port ${port}`)); 
+app.listen(process.env.PORT, () => console.log(`Server is running on port ${process.env.PORT}`)); 
