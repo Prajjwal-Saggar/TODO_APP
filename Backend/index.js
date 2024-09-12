@@ -2,13 +2,9 @@ const express = require('express');
 const cors = require('cors'); 
 const mongoose = require('mongoose');
 const Todo = require('./Todo.Models') ;
-
 require('dotenv').config();
-
-
 //Execute express 
 const app = express(); 
-
 //Middlewares
 app.use(express.json()); 
 app.use(cors());
@@ -35,4 +31,12 @@ app.get('/' , (req,res)=>{
                 const result  = await Todo.findByIdAndDelete(req.params.id);
                 res.json(result)
         })
+
 app.listen(process.env.PORT, () => console.log(`Server is running on port ${process.env.PORT}`)); 
+
+
+
+
+
+
+
